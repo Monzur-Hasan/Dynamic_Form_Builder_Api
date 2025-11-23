@@ -1,9 +1,11 @@
-﻿using BLL.Service.Interface;
+﻿using BLL.Helper;
+using BLL.Service.Interface;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Shared.Models;
 using Shared.Models.Pagination;
 using System.Data;
+using System.Data.Common;
 
 namespace BLL.Service.Implementation
 {
@@ -195,19 +197,34 @@ namespace BLL.Service.Implementation
             await using var tran = await conn.BeginTransactionAsync();
 
             try
-            {
-                await using (var cmd = new SqlCommand("DELETE OptionValues WHERE OptionId=@i", conn, (SqlTransaction)tran))
+            {                
+                await using (var cmdFF = conn.CreateCommand())
                 {
-                    cmd.Parameters.AddWithValue("@i", id);
-                    await cmd.ExecuteNonQueryAsync();
+                    cmdFF.Transaction = (SqlTransaction)tran;
+                    cmdFF.CommandText = "DELETE FROM FormFields WHERE OptionId=@id";
+                    cmdFF.AddParameter("@id", id);
+                    await cmdFF.ExecuteNonQueryAsync();
                 }
 
-                await using var cmd2 = new SqlCommand("DELETE Options WHERE OptionId=@i", conn, (SqlTransaction)tran);
-                cmd2.Parameters.AddWithValue("@i", id);
+                await using (var cmdChild = conn.CreateCommand())
+                {
+                    cmdChild.Transaction = (SqlTransaction)tran;
+                    cmdChild.CommandText = "DELETE FROM OptionValues WHERE OptionId=@id";
+                    cmdChild.AddParameter("@id", id);
+                    await cmdChild.ExecuteNonQueryAsync();
+                }
+              
+                await using (var cmd = conn.CreateCommand())
+                {
+                    cmd.Transaction = (SqlTransaction)tran;
+                    cmd.CommandText = "DELETE FROM Options WHERE OptionId=@id";
+                    cmd.AddParameter("@id", id);
 
-                var rows = await cmd2.ExecuteNonQueryAsync();
-                await tran.CommitAsync();
-                return rows > 0;
+                    int rows = await cmd.ExecuteNonQueryAsync();
+                    await tran.CommitAsync();
+
+                    return rows > 0;
+                }
             }
             catch
             {
