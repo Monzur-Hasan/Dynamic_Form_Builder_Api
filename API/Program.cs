@@ -1,68 +1,131 @@
-﻿using BLL;
-using BLL.Service.Implementation;
-using BLL.Service.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder.Extensions;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Shared.Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// =====================
-// Configuration
-// =====================
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables()
     .AddCommandLine(args);
 
-// Initialize ConfigurationHelper if you use it
+// Register Configuration
 ConfigurationHelper.Initialize(builder.Configuration);
 
-// =====================
-// Add Services
-// =====================
+// Add services to the container.
 builder.Services.AddControllers();
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddHttpClient();
 
-// =====================
-// Register DI for BLL
-// =====================
+var client_Url = builder.Configuration.GetSection("Clients").GetSection("AngularClient").GetSection("Url").Value;
+
+// Configure JWT Authentication
+//builder.Services.AddAuthentication(options =>
+//{
+//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//}).AddJwtBearer(options =>
+//{
+//    options.TokenValidationParameters = new TokenValidationParameters
+//    {
+//        ValidateIssuer = true,
+//        ValidateAudience = true,
+//        ValidateLifetime = true,
+//        ValidateIssuerSigningKey = true,
+//        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+//        ValidAudience = builder.Configuration["Jwt:Audience"],
+//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+//        ClockSkew = TimeSpan.Zero
+//    };
+//});
+
+
+// Ensure CORS uses runtime configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AngularClient",
+        builder =>
+        {
+            builder.
+            WithOrigins(client_Url).
+            AllowAnyHeader().
+            AllowAnyMethod().
+            AllowCredentials();
+        });
+
+});
+
+// Register Dependency Injection
 BLLInjector.BLLConfigureServices(builder.Services, builder.Configuration);
 
-// =====================
-// Swagger Configuration
-// =====================
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
+// Add authentication to Swagger UI
+builder.Services.AddSwaggerGen(options =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Dynamic From Builder", Version = "API V1" });
+
+    options.AddSecurityDefinition("JWT", new OpenApiSecurityScheme
     {
-        Title = "Dynamic Form Builder API",
-        Version = "v1",
-        Description = "API for Forms & Options management"
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        BearerFormat = "JWT",
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "JWT"
+                }
+            },
+            new string[] { }
+        }
     });
 });
 
 var app = builder.Build();
-
-// =====================
-// Middleware Pipeline
-// =====================
-if (app.Environment.IsDevelopment())
+// Enable Swagger
+app.UseSwagger();
+app.MapOpenApi();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dynamic Form Builder API V1");
-        c.RoutePrefix = string.Empty; // Swagger UI at root
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dynamic From Builder API V1");
+});
 
 app.UseHttpsRedirection();
+
+// Enable Static Files & Routing
+app.UseStaticFiles();
 app.UseRouting();
+
+// Enable CORS
+app.UseCors("AngularClient");
+
+// Enable Authentication & Authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
-// Map controllers
+// Map Controllers
 app.MapControllers();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

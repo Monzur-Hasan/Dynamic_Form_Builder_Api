@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HRM\\Dynamic_Form_Builder_Api\\API\\API.csproj": {}
+    "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\HRM\\Dynamic_Form_Builder_Api\\API\\API.csproj": {
+    "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRM\\Dynamic_Form_Builder_Api\\API\\API.csproj",
+        "projectUniqueName": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\NGIT\\.nuget\\packages\\",
-        "outputPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\API\\obj\\",
+        "projectPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\Monzur\\.nuget\\packages\\",
+        "outputPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\NGIT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Monzur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\HRM\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj": {
-                "projectPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj"
+              "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj": {
+                "projectPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj"
               }
             }
           }
@@ -58,21 +58,41 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.Negotiate": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.11, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[10.0.0, )"
             },
-            "Microsoft.OpenApi": {
-              "target": "Package",
-              "version": "[3.0.1, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[7.1.0, )"
             },
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[7.1.0, )"
+            },
+            "System.Security.Permissions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -98,20 +118,20 @@
         }
       }
     },
-    "D:\\HRM\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj": {
+    "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRM\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj",
+        "projectUniqueName": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj",
-        "packagesPath": "C:\\Users\\NGIT\\.nuget\\packages\\",
-        "outputPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\BLL\\obj\\",
+        "projectPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\BLL\\BLL.csproj",
+        "packagesPath": "C:\\Users\\Monzur\\.nuget\\packages\\",
+        "outputPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\NGIT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Monzur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -126,8 +146,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\HRM\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj": {
-                "projectPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj"
+              "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj": {
+                "projectPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj"
               }
             }
           }
@@ -177,20 +197,20 @@
         }
       }
     },
-    "D:\\HRM\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj": {
+    "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRM\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj",
+        "projectUniqueName": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\NGIT\\.nuget\\packages\\",
-        "outputPath": "D:\\HRM\\Dynamic_Form_Builder_Api\\Shared\\obj\\",
+        "projectPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\Monzur\\.nuget\\packages\\",
+        "outputPath": "D:\\1-WORK-STATION\\QIA\\Dynamic_Form_Builder_Api\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\NGIT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Monzur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

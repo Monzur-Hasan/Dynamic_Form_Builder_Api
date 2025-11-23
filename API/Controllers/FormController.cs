@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
+using Shared.Models.Pagination;
 
 
 namespace Dynamic_Form_Builder_Api.Controllers
@@ -27,8 +28,8 @@ namespace Dynamic_Form_Builder_Api.Controllers
             return Ok(form);
         }
 
-        [HttpPost, Route("Save")]
-        public async Task<IActionResult> SaveAsync([FromBody] FormDto dto)
+        [HttpPost, Route("SaveForm")]
+        public async Task<IActionResult> SaveFormAsync([FromBody] FormDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Title))
                 return BadRequest("Title required");
@@ -40,16 +41,33 @@ namespace Dynamic_Form_Builder_Api.Controllers
             int formId = await _repo.SaveFormAsync(dto.Title, dto.Fields);
             return Ok(new { formId });
         }
+             
+        [HttpPost,Route("GetFormsPaged")]
+        public async Task<IActionResult> GetFormsPagedAsync([FromBody] DataTableRequest req)
+        {
+            if (req == null)
+                return BadRequest("Invalid request");
 
-        [HttpPost, Route("Update")]
-        public async Task<IActionResult> UpdateAsync([FromBody] FormDto dto)
+            var result = await _repo.GetFormsPagedAsync(req);
+
+            return Ok(new
+            {
+                data = result.Data,                 // rows
+                recordsTotal = result.RecordsTotal, // total rows in DB
+                recordsFiltered = result.RecordsFiltered // after search
+            });
+        }
+
+
+        [HttpPost, Route("UpdateForm")]
+        public async Task<IActionResult> UpdateFormAsync([FromBody] FormDto dto)
         {
             bool ok = await _repo.UpdateFormAsync(dto);
             return ok ? Ok() : BadRequest("Update failed");
         }
 
-        [HttpDelete, Route("Delete{id}")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        [HttpDelete, Route("DeleteForm{id}")]
+        public async Task<IActionResult> DeleteFormAsync(int id)
         {
             bool ok = await _repo.DeleteFormAsync(id);
             return ok ? Ok() : BadRequest("Delete failed");

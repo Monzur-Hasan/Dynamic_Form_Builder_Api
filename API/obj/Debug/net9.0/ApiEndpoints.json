@@ -1,8 +1,8 @@
 [
   {
     "ContainingType": "Dynamic_Form_Builder_Api.Controllers.FormController",
-    "Method": "DeleteAsync",
-    "RelativePath": "api/Form/Delete{id}",
+    "Method": "DeleteFormAsync",
+    "RelativePath": "api/Form/DeleteForm{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -33,8 +33,24 @@
   },
   {
     "ContainingType": "Dynamic_Form_Builder_Api.Controllers.FormController",
-    "Method": "SaveAsync",
-    "RelativePath": "api/Form/Save",
+    "Method": "GetFormsPagedAsync",
+    "RelativePath": "api/Form/GetFormsPaged",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "Shared.Models.Pagination.DataTableRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.FormController",
+    "Method": "SaveFormAsync",
+    "RelativePath": "api/Form/SaveForm",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -49,8 +65,8 @@
   },
   {
     "ContainingType": "Dynamic_Form_Builder_Api.Controllers.FormController",
-    "Method": "UpdateAsync",
-    "RelativePath": "api/Form/Update",
+    "Method": "UpdateFormAsync",
+    "RelativePath": "api/Form/UpdateForm",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -58,6 +74,91 @@
       {
         "Name": "dto",
         "Type": "Shared.Models.FormDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "AddOptionValueAsync",
+    "RelativePath": "api/OptionSet/AddOptionValue{setId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "setId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Shared.Models.OptionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "CreateOptionSetAsync",
+    "RelativePath": "api/OptionSet/CreateOptionSet",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Shared.Models.OptionSetDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "DeleteOptionSetAsync",
+    "RelativePath": "api/OptionSet/DeleteOptionSet{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "DeleteValueAsync",
+    "RelativePath": "api/OptionSet/DeleteValue{valueId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "valueId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "GetOptionSetAsync",
+    "RelativePath": "api/OptionSet/GetOptionSet{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -75,6 +176,22 @@
   },
   {
     "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "GetPagedOptionSetsAsync",
+    "RelativePath": "api/OptionSet/GetPagedOptionSets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "Shared.Models.Pagination.DataTableRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
     "Method": "GetValuesAsync",
     "RelativePath": "api/OptionSet/GetValues{id}",
     "HttpMethod": "GET",
@@ -84,6 +201,48 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "UpdateOptionSetAsync",
+    "RelativePath": "api/OptionSet/UpdateOptionSet{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Shared.Models.OptionSetDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dynamic_Form_Builder_Api.Controllers.OptionSetController",
+    "Method": "UpdateValueAsync",
+    "RelativePath": "api/OptionSet/UpdateValue{valueId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "valueId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Shared.Models.OptionDto",
         "IsRequired": true
       }
     ],
