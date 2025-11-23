@@ -1,0 +1,13 @@
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.csproj.AssemblyReference.cache
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.AssemblyInfoInputs.cache
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.AssemblyInfo.cs
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.csproj.CoreCompileInputs.cache
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.sourcelink.json
+D:\HRM\Dynamic_Form_Builder_Api\Shared\bin\Debug\net9.0\Shared.deps.json
+D:\HRM\Dynamic_Form_Builder_Api\Shared\bin\Debug\net9.0\Shared.dll
+D:\HRM\Dynamic_Form_Builder_Api\Shared\bin\Debug\net9.0\Shared.pdb
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.dll
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\refint\Shared.dll
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\Shared.pdb
+D:\HRM\Dynamic_Form_Builder_Api\Shared\obj\Debug\net9.0\ref\Shared.dll
