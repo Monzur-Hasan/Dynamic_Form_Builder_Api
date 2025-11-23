@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Dynamic From Builder",
+    "title": "Dynamic Form Builder API",
     "version": "API V1"
   },
   "paths": {

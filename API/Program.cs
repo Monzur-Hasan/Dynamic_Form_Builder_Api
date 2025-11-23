@@ -72,7 +72,7 @@ BLLInjector.BLLConfigureServices(builder.Services, builder.Configuration);
 // Add authentication to Swagger UI
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Dynamic From Builder", Version = "API V1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Dynamic Form Builder API", Version = "API V1" });
 
     options.AddSecurityDefinition("JWT", new OpenApiSecurityScheme
     {
@@ -105,7 +105,7 @@ app.UseSwagger();
 app.MapOpenApi();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dynamic From Builder API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dynamic Form Builder API V1");
 });
 
 app.UseHttpsRedirection();
